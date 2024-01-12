@@ -1,7 +1,9 @@
 FROM caddy:latest
 
-COPY Caddyfile /etc/caddy/Caddyfile
+RUN apk add --no-cache ncurses
 
-RUN caddy fmt --overwrite /etc/caddy/Caddyfile
+COPY template.caddyfile ./
 
-CMD caddy run --config /etc/caddy/Caddyfile --adapter caddyfile 2>&1
+COPY --chmod=755 start.sh ./
+
+CMD ["sh", "start.sh"]

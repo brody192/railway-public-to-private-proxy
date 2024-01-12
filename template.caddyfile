@@ -1,0 +1,19 @@
+{
+	admin off
+	persist_config off
+	auto_https off
+	log {
+		format json
+	}
+	servers {
+		trusted_proxies static private_ranges
+	}
+}
+
+:{$PORT} {
+	log {
+		format json
+	}
+
+	reverse_proxy http://{HOST_PORT}
+}
