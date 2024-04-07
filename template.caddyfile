@@ -15,5 +15,8 @@
 		format json
 	}
 
-	reverse_proxy http://{HOST_PORT}
+	reverse_proxy http://{HOST_PORT} {
+		header_up Host {upstream_hostport}
+		header_down +Upgrade-Insecure-Requests "1"
+	}
 }
