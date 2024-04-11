@@ -24,4 +24,4 @@ sed -i "s~{HOST_PORT}~$HOST_PORT~g" Caddyfile
 
 caddy fmt --overwrite Caddyfile
 
-caddy run --config Caddyfile --adapter caddyfile 2>&1
+exec caddy run --config Caddyfile --adapter caddyfile 2>&1
